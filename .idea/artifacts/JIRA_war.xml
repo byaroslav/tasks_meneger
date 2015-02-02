@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JIRA:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SimpleJira-1.0.war">
+      <element id="artifact" artifact-name="JIRA:war exploded" />
+    </root>
+  </artifact>
+</component>

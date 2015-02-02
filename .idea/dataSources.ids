@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="b6e86002-2bd1-4864-9eaf-26e409fa5218">
+    <database-info product="MySQL" version="5.5.41-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="simple_jira"/>
+    <table name="Comment" schema="" catalog="simple_jira" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="createDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="message" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="author_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="task_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_e79c9de09c2b46508659b89adea" columns="task_id" ref-table="TASKS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_e1e9a73d866e4f18bde1acc1a80" columns="author_id" ref-table="USERS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_e1e9a73d866e4f18bde1acc1a80" unique="false" columns="author_id"/>
+      <index name="FK_e79c9de09c2b46508659b89adea" unique="false" columns="task_id"/>
+    </table>
+    <table name="PASSPORTS" schema="" catalog="simple_jira" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pass" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_2679f299736a492c8136a9bb2d6" columns="user_id" ref-table="USERS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="UK_c63ef2b45ee54e10a752f0fc106" unique="true" columns="login"/>
+      <index name="FK_2679f299736a492c8136a9bb2d6" unique="false" columns="user_id"/>
+    </table>
+    <table name="TASKS" schema="" catalog="simple_jira" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="createDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="description" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="endDate" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="executingHours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="planingHours" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="priority" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="state" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="author_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="executor_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_b90cb29bce23495aabc22cfb840" columns="executor_id" ref-table="USERS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_8f077b7fc2d14b0696d97cf9fe9" columns="author_id" ref-table="USERS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_e79c9de09c2b46508659b89adea" table="Comment" schema="" catalog="simple_jira" columns="task_id"/>
+      <exported-key name="FK_68169b829585470caa2dc864f05" table="TASK_VISITORS" schema="" catalog="simple_jira" columns="USER_ID"/>
+      <index name="FK_8f077b7fc2d14b0696d97cf9fe9" unique="false" columns="author_id"/>
+      <index name="FK_b90cb29bce23495aabc22cfb840" unique="false" columns="executor_id"/>
+    </table>
+    <table name="TASK_VISITORS" schema="" catalog="simple_jira" type="TABLE">
+      <column name="TASK_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="USER_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <foreign-key name="FK_965ca6b8f95e42d89227f2efb8b" columns="TASK_ID" ref-table="USERS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_68169b829585470caa2dc864f05" columns="USER_ID" ref-table="TASKS" ref-schema="" ref-catalog="simple_jira" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_68169b829585470caa2dc864f05" unique="false" columns="USER_ID"/>
+      <index name="FK_965ca6b8f95e42d89227f2efb8b" unique="false" columns="TASK_ID"/>
+    </table>
+    <table name="USERS" schema="" catalog="simple_jira" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_e1e9a73d866e4f18bde1acc1a80" table="Comment" schema="" catalog="simple_jira" columns="author_id"/>
+      <exported-key name="FK_2679f299736a492c8136a9bb2d6" table="PASSPORTS" schema="" catalog="simple_jira" columns="user_id"/>
+      <exported-key name="FK_b90cb29bce23495aabc22cfb840" table="TASKS" schema="" catalog="simple_jira" columns="executor_id"/>
+      <exported-key name="FK_8f077b7fc2d14b0696d97cf9fe9" table="TASKS" schema="" catalog="simple_jira" columns="author_id"/>
+      <exported-key name="FK_965ca6b8f95e42d89227f2efb8b" table="TASK_VISITORS" schema="" catalog="simple_jira" columns="TASK_ID"/>
+    </table>
+  </data-source>
+</component>

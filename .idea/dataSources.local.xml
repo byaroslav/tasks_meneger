@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - @localhost" uuid="b6e86002-2bd1-4864-9eaf-26e409fa5218">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>simple_jira.*</schema-pattern>
+      <default-schemas>simple_jira.*</default-schemas>
+    </data-source>
+  </component>
+</project>
