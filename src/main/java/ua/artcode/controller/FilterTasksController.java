@@ -28,10 +28,10 @@ public class FilterTasksController extends MainController {
         String taskPriority = req.getParameter("taskPriority");
         String taskState = req.getParameter("taskState");
 
-        if (!"0".equals(executor)) params.put("executor", executor);
-        if (!"0".equals(author)) params.put("author", author);
-        if (!"0".equals(taskPriority)) params.put("taskPriority", taskPriority);
-        if (!"0".equals(taskState)) params.put("taskState", taskState);
+        if (!"0".equals(executor) && executor != null) params.put("executor", executor);
+        if (!"0".equals(author) && author != null) params.put("author", author);
+        if (!"0".equals(taskPriority) && taskPriority != null) params.put("taskPriority", taskPriority);
+        if (!"0".equals(taskState) && taskState != null) params.put("taskState", taskState);
 
         String query = taskService.createdQueryForTasksList(params);
         int numberOfTasks = taskService.countTasks(query);
