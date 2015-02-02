@@ -29,6 +29,9 @@ public class MenuController extends HttpServlet {
             rd = req.getRequestDispatcher("/WEB-INF/pages/select_task.jsp");
         } else if (path.endsWith("filterTasks")) {
             rd = req.getRequestDispatcher("/WEB-INF/pages/filter_tasks.jsp");
+        } else if (path.endsWith("exit")) {
+            req.getSession().invalidate();
+            rd = req.getRequestDispatcher("/login.html");
         } else if (path.endsWith("editTask")) {
             rd = req.getRequestDispatcher("/WEB-INF/pages/edit_task.jsp");
             int id = Integer.parseInt(req.getParameter("id"));

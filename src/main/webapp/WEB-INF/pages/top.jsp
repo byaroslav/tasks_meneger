@@ -16,7 +16,8 @@
     <p>Вы вошли под пользователем:<%= client.getName()%> <br>
         <a href="/menu/addTask">1.Добавить задачу</a>
         <a href="/menu/home">2.Домашняя страница</a>
-        <a href="/menu/filterTasks">2.Фильтр задач</a></p>
+        <a href="/menu/filterTasks">3.Фильтр задач</a>
+        <a href="/menu/exit">4.Выход. </a></p>
 </div>
 
 
